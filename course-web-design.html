@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Design Mastery - TECHMA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/course-styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">TECH<span>MA</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <button class="user-btn" id="userBtn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userName">User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="account.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> My Account
+                        </a>
+                        <a href="dashboard.html" class="dropdown-item">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                        <a href="#" class="dropdown-item" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+                <div class="auth-btns" id="authBtns">
+                    <a href="login.html" class="login-btn">Login</a>
+                    <a href="register.html" class="register-btn">Create Account</a>
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Course Hero Section -->
+    <section class="course-hero">
+        <div class="container">
+            <div class="course-hero-content">
+                <nav class="breadcrumb">
+                    <a href="index.html">Home</a> /
+                    <a href="services.html">Services</a> /
+                    <span>Web Design Mastery</span>
+                </nav>
+                <h1>Web Design</h1>
+                <p class="course-subtitle">Learn to create stunning, responsive websites with video lessons,
+                    downloadable resources, and YouTube tutorials</p>
+                <div class="course-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-video"></i>
+                        <span>15+ Video Lessons</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>8 Downloadable PDFs</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fab fa-youtube"></i>
+                        <span>YouTube Tutorials</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-download"></i>
+                        <span>Resource Library</span>
+                    </div>
+                </div>
+                <div class="course-actions">
+                    <button class="cta-button enroll-btn">
+                        <i class="fas fa-play-circle"></i>
+                        Start Learning Free
+                    </button>
+                    <button class="secondary-btn">
+                        <i class="far fa-heart"></i>
+                        Add to Wishlist
+                    </button>
+                </div>
+            </div>
+            <div class="course-hero-image">
+                <div class="video-preview">
+                    <img src="Sources/webdesign-hero.png" alt="Web Design Course">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="course-badge">Free</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Player Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="video-container">
+                <iframe id="videoFrame" width="100%" height="500" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Content Section -->
+    <section class="course-content-section">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Main Content -->
+                <div class="main-content">
+                    <!-- Video Lessons -->
+                    <div class="content-section">
+                        <h2><i class="fas fa-video"></i> Video Lessons</h2>
+                        <div class="video-grid">
+                            <!-- Uploaded Video 1 -->
+                            <div class="video-card" data-video-src="videos/html-intro.mp4" data-video-type="uploaded">
+                                <div class="video-thumbnail">
+                                    <iframe width="336" height="179"
+                                    src="https://www.youtube.com/embed/videoseries?list=PLillGF-RfqbaevC84ezBcml2vQZ_7T6jY"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                    <div class="video-overlay">
+                                        <i class="fas fa-play"></i>
+                                        <span>Watch Now</span>
+                                    </div>
+                                    <div class="video-duration">15:30</div>
+                                </div>
+                                <div class="video-info">
+                                    <h3>HTML5 Introduction & Basics</h3>
+                                    <p>Learn the foundation of web development with HTML5</p>
+                                    <div class="video-meta">
+                                        <span><i class="far fa-clock"></i> 15 min</span>
+                                        <span><i class="far fa-eye"></i> 2.5K views</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- YouTube Video 1 -->
+                            <div class="video-card" data-video-src="https://www.youtube.com/embed/pQN-pnXPaVg"
+                                data-video-type="youtube">
+                                <div class="video-thumbnail">
+                                    <iframe width="336" height="179"
+                                    src="https://www.youtube.com/embed/videoseries?list=PL4cUxeGkcC9ivBf_eKCPIAYXWzLlPAm6G"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                    <div class="video-overlay">
+                                        <i class="fab fa-youtube"></i>
+                                        <span>Watch on YouTube</span>
+                                    </div>
+                                    <div class="video-duration">22:15</div>
+                                    <div class="youtube-badge">YouTube</div>
+                                </div>
+                                <div class="video-info">
+                                    <h3>CSS Grid Complete Guide</h3>
+                                    <p>Master CSS Grid layout with this comprehensive tutorial</p>
+                                    <div class="video-meta">
+                                        <span><i class="far fa-clock"></i> 22 min</span>
+                                        <span><i class="far fa-eye"></i> 15K views</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Uploaded Video 2 -->
+                            <div class="video-card" data-video-src="videos/flexbox-tutorial.mp4"
+                                data-video-type="uploaded">
+                                <div class="video-thumbnail">
+                                    <iframe width="336" height="179"
+                                    src="https://www.youtube.com/embed/videoseries?list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                    <div class="video-overlay">
+                                        <i class="fas fa-play"></i>
+                                        <span>Watch Now</span>
+                                    </div>
+                                    <div class="video-duration">18:45</div>
+                                </div>
+                                <div class="video-info">
+                                    <h3>CSS Flexbox Mastery</h3>
+                                    <p>Learn Flexbox for modern web layouts</p>
+                                    <div class="video-meta">
+                                        <span><i class="far fa-clock"></i> 19 min</span>
+                                        <span><i class="far fa-eye"></i> 3.2K views</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- YouTube Video 2 -->
+                            <div class="video-card" data-video-src="https://www.youtube.com/embed/hdI2bqOjy3c"
+                                data-video-type="youtube">
+                                <div class="video-thumbnail">
+                                    <iframe width="336" height="179"
+                                    src="https://www.youtube.com/embed/videoseries?list=PLillGF-RfqbbnEGy3ROiLWk7JMCuSyQtX"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                    <div class="video-overlay">
+                                        <i class="fab fa-youtube"></i>
+                                        <span>Watch on YouTube</span>
+                                    </div>
+                                    <div class="video-duration">35:20</div>
+                                    <div class="youtube-badge">YouTube</div>
+                                </div>
+                                <div class="video-info">
+                                    <h3>JavaScript for Beginners</h3>
+                                    <p>Start your JavaScript journey with this beginner-friendly tutorial</p>
+                                    <div class="video-meta">
+                                        <span><i class="far fa-clock"></i> 35 min</span>
+                                        <span><i class="far fa-eye"></i> 45K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Downloadable Resources -->
+                    <div class="content-section">
+                        <h2><i class="fas fa-download"></i> Downloadable Resources</h2>
+                        <div class="resources-grid">
+                            <!-- PDF 1 -->
+                            <div class="resource-card" data-file="resources/html-cheatsheet.pdf">
+                                <div class="resource-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <h3>HTML5 Cheat Sheet</h3>
+                                    <p>Complete reference guide for HTML5 tags and attributes</p>
+                                    <div class="resource-meta">
+                                        <span><i class="fas fa-file-alt"></i> PDF</span>
+                                        <span><i class="fas fa-download"></i> 2.1 MB</span>
+                                    </div>
+                                </div>
+                                <button class="download-btn" data-file="resources/html-cheatsheet.pdf">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+
+                            <!-- PDF 2 -->
+                            <div class="resource-card" data-file="resources/css-grid-guide.pdf">
+                                <div class="resource-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <h3>CSS Grid Complete Guide</h3>
+                                    <p>Detailed guide with examples for CSS Grid layout</p>
+                                    <div class="resource-meta">
+                                        <span><i class="fas fa-file-alt"></i> PDF</span>
+                                        <span><i class="fas fa-download"></i> 3.5 MB</span>
+                                    </div>
+                                </div>
+                                <button class="download-btn" data-file="resources/css-grid-guide.pdf">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+
+                            <!-- Code Files -->
+                            <div class="resource-card" data-file="resources/starter-templates.zip">
+                                <div class="resource-icon">
+                                    <i class="fas fa-file-archive"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <h3>Starter Templates</h3>
+                                    <p>HTML/CSS starter templates for quick projects</p>
+                                    <div class="resource-meta">
+                                        <span><i class="fas fa-file-archive"></i> ZIP</span>
+                                        <span><i class="fas fa-download"></i> 5.2 MB</span>
+                                    </div>
+                                </div>
+                                <button class="download-btn" data-file="resources/starter-templates.zip">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+
+                            <!-- Exercise Files -->
+                            <div class="resource-card" data-file="resources/exercise-files.zip">
+                                <div class="resource-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <h3>Exercise Files</h3>
+                                    <p>Practice files for hands-on learning</p>
+                                    <div class="resource-meta">
+                                        <span><i class="fas fa-code"></i> ZIP</span>
+                                        <span><i class="fas fa-download"></i> 8.7 MB</span>
+                                    </div>
+                                </div>
+                                <button class="download-btn" data-file="resources/exercise-files.zip">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- YouTube Playlist Section -->
+                    <div class="content-section">
+                        <h2><i class="fab fa-youtube"></i> YouTube Tutorial Playlist</h2>
+                        <div class="youtube-playlist">
+                            <div class="playlist-info">
+                                <h3>Web Design Tutorial Series</h3>
+                                <p>Complete playlist with 25+ tutorials covering all aspects of web design</p>
+                                <a href="https://www.youtube.com/playlist?list=PLillGF-RfqbZTASqIqdvm1R5mLrQq79CU"
+                                    class="youtube-link" target="_blank">
+                                    <i class="fab fa-youtube"></i>
+                                    View Full Playlist on YouTube
+                                </a>
+                            </div>
+                            <div class="playlist-embed">
+                                <iframe width="100%" height="400"
+                                    src="https://www.youtube.com/embed/videoseries?list=PLillGF-RfqbZTASqIqdvm1R5mLrQq79CU"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="course-sidebar">
+                    <!-- Progress Card -->
+                    <div class="sidebar-card progress-card">
+                        <h3>Your Progress</h3>
+                        <div class="progress-circle">
+                            <div class="circle">
+                                <span class="progress-value">0%</span>
+                            </div>
+                        </div>
+                        <div class="progress-stats">
+                            <div class="stat">
+                                <span class="number">0/4</span>
+                                <span class="label">Videos Watched</span>
+                            </div>
+                            <div class="stat">
+                                <span class="number">0/4</span>
+                                <span class="label">Resources Downloaded</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Downloads -->
+                    <div class="sidebar-card">
+                        <h3>Quick Downloads</h3>
+                        <div class="quick-downloads">
+                            <a href="resources/course-syllabus.pdf" class="download-link" download>
+                                <i class="fas fa-file-pdf"></i>
+                                Course Syllabus
+                            </a>
+                            <a href="resources/all-resources.zip" class="download-link" download>
+                                <i class="fas fa-file-archive"></i>
+                                All Resources (ZIP)
+                            </a>
+                            <a href="resources/certificate-template.pdf" class="download-link" download>
+                                <i class="fas fa-certificate"></i>
+                                Certificate Template
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>TECHMA</h3>
+                    <p>Join TECHMA and step into the world of free digital learning. Explore interactive courses, gain
+                        new skills,
+                        and grow your knowledge!</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">E-Commerce</a></li>
+                        <li><a href="#">SEO Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>LMS</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Digital Street, Tech City</li>
+                        <li><i class="fas fa-phone"></i> +1 (000) 111-0000</li>
+                        <li><i class="fas fa-envelope"></i> sample@sample.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 TECHMA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/course-media.js"></script>
+</body>
+
+</html>

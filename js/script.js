@@ -134,24 +134,40 @@ window.addEventListener('load', checkScroll);
 
 
 // FAQ Accordion Functionality
-const faqItems = document.querySelectorAll('.faq-item');
-
-if (faqItems.length > 0) {
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
+function initFAQAccordion() {
+    const faqItems = document.querySelectorAll('.faq-item');
     
-    question.addEventListener('click', () => {
-      // Close all other items
-      faqItems.forEach(otherItem => {
-        if (otherItem !== item && otherItem.classList.contains('active')) {
-          otherItem.classList.remove('active');
-        }
-      });
-      
-      // Toggle current item
-      item.classList.toggle('active');
-    });
-  });
+    if (faqItems.length > 0) {
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        console.log('FAQ accordion initialized with', faqItems.length, 'items');
+    }
+}
+
+// Initialize FAQ when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initFAQAccordion();
+});
+
+// Also initialize if page loads after DOM is already ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFAQAccordion);
+} else {
+    initFAQAccordion();
 }
 
 // Contact Form Submission
