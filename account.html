@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account - TECHMA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">TECH<span>MA</span></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="terms.html">Terms and Conditions</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons">
+        <div class="user-menu" id="userMenu">
+          <button class="user-btn" id="userBtn">
+            <i class="fas fa-user-circle"></i>
+            <span id="userName">John Doe</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="user-dropdown" id="userDropdown">
+            <a href="account.html" class="dropdown-item active">
+              <i class="fas fa-user"></i> My Account
+            </a>
+            <a href="dashboard.html" class="dropdown-item">
+              <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a>
+            <a href="#" class="dropdown-item" id="logoutBtn">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Account Section -->
+  <section class="account-section">
+    <div class="container">
+      <div class="account-container">
+        <!-- Sidebar -->
+        <div class="account-sidebar">
+          <div class="user-profile">
+            <div class="profile-image">
+              <img src="Sources/user-avatar.jpg" alt="User Avatar" id="userAvatar">
+              <button class="edit-avatar">
+                <i class="fas fa-camera"></i>
+              </button>
+            </div>
+            <h3 id="displayUserName">John Doe</h3>
+            <p>Premium Member</p>
+          </div>
+          
+          <nav class="account-nav">
+            <a href="account.html" class="nav-item active">
+              <i class="fas fa-user"></i>
+              Profile Information
+            </a>
+            <a href="dashboard.html" class="nav-item">
+              <i class="fas fa-tachometer-alt"></i>
+              Learning Dashboard
+            </a>
+            <a href="my-courses.html" class="nav-item">
+              <i class="fas fa-book"></i>
+              My Courses
+            </a>
+            <a href="certificates.html" class="nav-item">
+              <i class="fas fa-certificate"></i>
+              Certificates
+            </a>
+            <a href="settings.html" class="nav-item">
+              <i class="fas fa-cog"></i>
+              Settings
+            </a>
+          </nav>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="account-content">
+          <div class="account-header">
+            <h1>Profile Information</h1>
+            <p>Manage your personal information and account settings</p>
+          </div>
+          
+          <div class="account-tabs">
+            <button class="tab-btn active" data-tab="profile">Personal Info</button>
+            <button class="tab-btn" data-tab="security">Security</button>
+            <button class="tab-btn" data-tab="preferences">Preferences</button>
+          </div>
+          
+          <div class="tab-content active" id="profileTab">
+            <form class="account-form" id="profileForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="accountFirstName">First Name</label>
+                  <input type="text" id="accountFirstName" value="John">
+                </div>
+                <div class="form-group">
+                  <label for="accountLastName">Last Name</label>
+                  <input type="text" id="accountLastName" value="Doe">
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="accountEmail">Email Address</label>
+                <input type="email" id="accountEmail" value="john.doe@example.com">
+              </div>
+              
+              <div class="form-group">
+                <label for="accountPhone">Phone Number</label>
+                <input type="tel" id="accountPhone" value="+1 (555) 123-4567">
+              </div>
+              
+              <div class="form-group">
+                <label for="accountBio">Bio</label>
+                <textarea id="accountBio" rows="4" placeholder="Tell us about yourself...">Passionate about web development and digital marketing. Always eager to learn new technologies and share knowledge with others.</textarea>
+              </div>
+              
+              <button type="submit" class="save-btn">Save Changes</button>
+            </form>
+          </div>
+          
+          <div class="tab-content" id="securityTab">
+            <form class="account-form" id="securityForm">
+              <div class="form-group">
+                <label for="currentPassword">Current Password</label>
+                <input type="password" id="currentPassword">
+              </div>
+              
+              <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword">
+              </div>
+              
+              <div class="form-group">
+                <label for="confirmNewPassword">Confirm New Password</label>
+                <input type="password" id="confirmNewPassword">
+              </div>
+              
+              <div class="security-options">
+                <h3>Two-Factor Authentication</h3>
+                <label class="checkbox-container">
+                  <input type="checkbox" id="twoFactorAuth">
+                  <span class="checkmark"></span>
+                  Enable two-factor authentication for added security
+                </label>
+              </div>
+              
+              <button type="submit" class="save-btn">Update Password</button>
+            </form>
+          </div>
+          
+          <div class="tab-content" id="preferencesTab">
+            <form class="account-form" id="preferencesForm">
+              <div class="preference-options">
+                <h3>Notification Preferences</h3>
+                <label class="checkbox-container">
+                  <input type="checkbox" id="emailNotifications" checked>
+                  <span class="checkmark"></span>
+                  Email notifications
+                </label>
+                <label class="checkbox-container">
+                  <input type="checkbox" id="courseUpdates" checked>
+                  <span class="checkmark"></span>
+                  Course updates and new content
+                </label>
+                <label class="checkbox-container">
+                  <input type="checkbox" id="marketingEmails">
+                  <span class="checkmark"></span>
+                  Marketing and promotional emails
+                </label>
+              </div>
+              
+              <div class="preference-options">
+                <h3>Learning Preferences</h3>
+                <label class="checkbox-container">
+                  <input type="checkbox" id="autoPlay" checked>
+                  <span class="checkmark"></span>
+                  Auto-play next lesson
+                </label>
+                <label class="checkbox-container">
+                  <input type="checkbox" id="downloadable" checked>
+                  <span class="checkmark"></span>
+                  Allow downloadable content
+                </label>
+              </div>
+              
+              <button type="submit" class="save-btn">Save Preferences</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <!-- Same footer as previous pages -->
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - TECHMA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">TECH<span>MA</span></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="terms.html">Terms and Conditions</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons">
+        <div class="user-menu" id="userMenu" style="display: none;">
+          <button class="user-btn" id="userBtn">
+            <i class="fas fa-user-circle"></i>
+            <span id="userName">User</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="user-dropdown" id="userDropdown">
+            <a href="account.html" class="dropdown-item">
+              <i class="fas fa-user"></i> My Account
+            </a>
+            <a href="dashboard.html" class="dropdown-item">
+              <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a>
+            <a href="#" class="dropdown-item" id="logoutBtn">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+          </div>
+        </div>
+        <div class="auth-btns" id="authBtns">
+          <a href="login.html" class="login-btn">Login</a>
+          <a href="register.html" class="register-btn">Create Account</a>
+        </div>
+      </div>
+      <div class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <h1>About TECHMA</h1>
+        <p>Empowering learners worldwide with free, high-quality digital education</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="mission-section">
+    <div class="container">
+      <div class="mission-grid">
+        <div class="mission-content">
+          <h2>Our Mission</h2>
+          <p>At TECHMA, we believe that education should be accessible to everyone, regardless of their financial
+            situation. Our mission is to break down barriers to learning by providing high-quality, free digital courses
+            that empower individuals to gain new skills, advance their careers, and achieve their personal goals.</p>
+          <p>Founded in 2020, we've helped over 50,000 learners worldwide transform their lives through education. Our
+            platform offers a diverse range of courses taught by industry experts, all completely free of charge.</p>
+          <div class="mission-stats">
+            <div class="stat">
+              <h3>50,000+</h3>
+              <p>Students Enrolled</p>
+            </div>
+            <div class="stat">
+              <h3>100+</h3>
+              <p>Courses Available</p>
+            </div>
+            <div class="stat">
+              <h3>25+</h3>
+              <p>Expert Instructors</p>
+            </div>
+          </div>
+        </div>
+        <div class="mission-image">
+          <img src="Sources/about-mission.jpg" alt="Our Mission">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="values-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Values</h2>
+        <p>These core principles guide everything we do at TECHMA</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-item">
+          <div class="value-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3>Accessibility</h3>
+          <p>We believe education should be available to everyone, which is why all our courses are completely free.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3>Quality</h3>
+          <p>Our courses are developed by industry experts and regularly updated to ensure they meet current standards.
+          </p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Community</h3>
+          <p>We foster a supportive learning environment where students can connect and grow together.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3>Innovation</h3>
+          <p>We continuously improve our platform and course offerings to provide the best learning experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Meet Our Team</h2>
+        <p>The passionate educators and developers behind TECHMA</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-image">
+            <img src="Sources/team1.jpg" alt="Sarah Johnson">
+          </div>
+          <h3>Sarah Johnson</h3>
+          <p class="member-role">Founder & CEO</p>
+          <p>Former educator with 10+ years of experience in digital learning platforms.</p>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="Sources/team2.jpg" alt="Michael Chen">
+          </div>
+          <h3>Michael Chen</h3>
+          <p class="member-role">Head of Curriculum</p>
+          <p>Expert in instructional design and course development with a PhD in Education.</p>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="Sources/team3.jpg" alt="Elena Rodriguez">
+          </div>
+          <h3>Elena Rodriguez</h3>
+          <p class="member-role">Technical Director</p>
+          <p>Software engineer specializing in creating scalable educational platforms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Start Learning?</h2>
+        <p>Join thousands of students who are already transforming their lives with TECHMA</p>
+        <a href="index.html" class="cta-button">Explore Courses <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>TECHMA</h3>
+          <p>Join TECHMA and step into the world of free digital learning. Explore interactive courses, gain new skills,
+            and grow your knowledge!</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="services.html">Web Design</a></li>
+            <li><a href="services.html">Web Development</a></li>
+            <li><a href="services.html">Digital Marketing</a></li>
+            <li><a href="services.html">E-Commerce</a></li>
+            <li><a href="services.html">SEO Optimization</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>LMS</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <ul class="footer-links">
+            <li><i class="fas fa-map-marker-alt"></i> 123 Digital Street, Tech City</li>
+            <li><i class="fas fa-phone"></i> +1 (000) 111-0000</li>
+            <li><i class="fas fa-envelope"></i> sample@sample.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 TECHMA. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -7,23 +7,47 @@
   <title>LMS</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
   <!-- Header -->
   <header>
     <div class="container header-container">
-      <a href="#" class="logo">TECH<span>MA</span></a>
+      <a href="index.html" class="logo">TECH<span>MA</span></a>
       <nav>
         <ul class="nav-links">
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Terms and Conditions</a></li>
-          <li><a href="#">Previews</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="terms.html">Terms and Conditions</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
+      <div class="auth-buttons">
+        <div class="user-menu" id="userMenu" style="display: none;">
+          <button class="user-btn" id="userBtn">
+            <i class="fas fa-user-circle"></i>
+            <span id="userName">User</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="user-dropdown" id="userDropdown">
+            <a href="account.html" class="dropdown-item">
+              <i class="fas fa-user"></i> My Account
+            </a>
+            <a href="dashboard.html" class="dropdown-item">
+              <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a>
+            <a href="#" class="dropdown-item" id="logoutBtn">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+          </div>
+        </div>
+        <div class="auth-btns" id="authBtns">
+          <a href="login.html" class="login-btn">Login</a>
+          <a href="register.html" class="register-btn">Create Account</a>
+        </div>
+      </div>
       <div class="mobile-menu-btn">
         <i class="fas fa-bars"></i>
       </div>
@@ -133,43 +157,41 @@
     <div class="container">
       <div class="section-title">
         <h2>What Our Student Say</h2>
-        <p>Hear from learners who have benefited from EduFree. Our students share their experiences, highlighting how our platform helped them gain new skills, improve knowledge, and achieve their goals all completely free.</p>
+        <p>Hear from learners who have benefited from EduFree. Our students share their experiences, highlighting how
+          our platform helped them gain new skills, improve knowledge, and achieve their goals all completely free.</p>
       </div>
       <div class="slider-container">
         <div class="slider">
           <div class="slide">
             <div class="slide-img">
-              <img
-                src="Sources/sample1.png"
-                alt="Student reviews">
+              <img src="Sources/sample1.png" alt="Student reviews">
             </div>
             <div class="slide-content">
               <h3>Learning Experience</h3>
-              <p>"EduFree made learning fun and accessible. The lessons are easy to follow, and I feel more confident applying what I learned!"</p>
+              <p>"EduFree made learning fun and accessible. The lessons are easy to follow, and I feel more confident
+                applying what I learned!"</p>
               <p class="client-name">— Test No 1</p>
             </div>
           </div>
           <div class="slide">
             <div class="slide-img">
-              <img
-                src="Sources/sample2.png"
-                alt="Studen reviews">
+              <img src="Sources/sample2.png" alt="Studen reviews">
             </div>
             <div class="slide-content">
               <h3>Platform Quality</h3>
-              <p>“The website is well-organized, interactive, and completely free. I love how I can track my progress and revisit lessons anytime.”</p>
+              <p>“The website is well-organized, interactive, and completely free. I love how I can track my progress
+                and revisit lessons anytime.”</p>
               <p class="client-name">— Test No 2</p>
             </div>
           </div>
           <div class="slide">
             <div class="slide-img">
-              <img
-                src="Sources/sample1.png"
-                alt="Student reviews">
+              <img src="Sources/sample1.png" alt="Student reviews">
             </div>
             <div class="slide-content">
               <h3>Skill Improvement</h3>
-              <p>“I improved my analytical and problem-solving skills thanks to EduFree’s interactive content and clear explanations.”</p>
+              <p>“I improved my analytical and problem-solving skills thanks to EduFree’s interactive content and clear
+                explanations.”</p>
               <p class="client-name">— Test No 3</p>
             </div>
           </div>
@@ -192,7 +214,8 @@
       <div class="footer-container">
         <div class="footer-col">
           <h3>TECHMA</h3>
-          <p>Join TECHMA and step into the world of free digital learning. Explore interactive courses, gain new skills, and grow your knowledge!</p>
+          <p>Join TECHMA and step into the world of free digital learning. Explore interactive courses, gain new skills,
+            and grow your knowledge!</p>
           <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -235,7 +258,7 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>

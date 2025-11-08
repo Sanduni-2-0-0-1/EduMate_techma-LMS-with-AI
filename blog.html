@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - TECHMA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">TECH<span>MA</span></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <button class="user-btn" id="userBtn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userName">User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="account.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> My Account
+                        </a>
+                        <a href="dashboard.html" class="dropdown-item">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                        <a href="#" class="dropdown-item" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+                <div class="auth-btns" id="authBtns">
+                    <a href="login.html" class="login-btn">Login</a>
+                    <a href="register.html" class="register-btn">Create Account</a>
+                </div>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>TECHMA Blog</h1>
+                <p>Insights, tips, and news about digital skills and online learning</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-container">
+                <!-- Main Content -->
+                <div class="blog-main">
+                    <!-- Featured Post -->
+                    <div class="featured-post">
+                        <div class="featured-image">
+                            <img src="Sources/blog-featured.jpg" alt="Featured Blog Post">
+                            <div class="featured-badge">Featured</div>
+                        </div>
+                        <div class="featured-content">
+                            <div class="post-meta">
+                                <span class="post-category">Web Development</span>
+                                <span class="post-date">January 15, 2025</span>
+                            </div>
+                            <h2><a href="blog-post.html">The Future of Web Development: Trends to Watch in 2025</a></h2>
+                            <p>Explore the latest trends shaping web development, from AI-powered tools to progressive
+                                web apps and beyond. Learn what skills you need to stay ahead in the rapidly evolving
+                                digital landscape.</p>
+                            <div class="post-footer">
+                                <div class="author">
+                                    <img src="Sources/author1.jpg" alt="Author" class="author-avatar">
+                                    <span>By Sarah Johnson</span>
+                                </div>
+                                <a href="blog-post.html" class="read-more">Read More <i
+                                        class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Posts Grid -->
+                    <div class="blog-grid">
+                        <!-- Post 1 -->
+                        <article class="blog-post">
+                            <div class="post-image">
+                                <img src="Sources/blog1.jpg" alt="Digital Marketing Strategies">
+                                <div class="post-category">Digital Marketing</div>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-date">January 12, 2025</span>
+                                    <span class="read-time">5 min read</span>
+                                </div>
+                                <h3><a href="blog-post.html">10 Digital Marketing Strategies That Actually Work in
+                                        2025</a></h3>
+                                <p>Discover proven digital marketing strategies that deliver results. From content
+                                    marketing to social media advertising, learn how to grow your online presence
+                                    effectively.</p>
+                                <div class="post-footer">
+                                    <div class="author">
+                                        <img src="Sources/author2.jpg" alt="Author" class="author-avatar">
+                                        <span>Mike Chen</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Post 2 -->
+                        <article class="blog-post">
+                            <div class="post-image">
+                                <img src="Sources/blog2.jpg" alt="Data Analytics Career">
+                                <div class="post-category">Data Analytics</div>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-date">January 8, 2025</span>
+                                    <span class="read-time">7 min read</span>
+                                </div>
+                                <h3><a href="blog-post.html">How to Start a Career in Data Analytics: Complete Guide</a>
+                                </h3>
+                                <p>Interested in data analytics but don't know where to start? This comprehensive guide
+                                    covers everything from required skills to job opportunities and career paths.</p>
+                                <div class="post-footer">
+                                    <div class="author">
+                                        <img src="Sources/author3.jpg" alt="Author" class="author-avatar">
+                                        <span>Emma Rodriguez</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Post 3 -->
+                        <article class="blog-post">
+                            <div class="post-image">
+                                <img src="Sources/blog3.jpg" alt="SEO Best Practices">
+                                <div class="post-category">SEO</div>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-date">January 5, 2025</span>
+                                    <span class="read-time">6 min read</span>
+                                </div>
+                                <h3><a href="blog-post.html">SEO Best Practices for 2025: What's Changed and What
+                                        Matters</a></h3>
+                                <p>Stay up-to-date with the latest SEO trends and algorithm updates. Learn which
+                                    strategies still work and what new techniques you should implement for better
+                                    rankings.</p>
+                                <div class="post-footer">
+                                    <div class="author">
+                                        <img src="Sources/author1.jpg" alt="Author" class="author-avatar">
+                                        <span>Sarah Johnson</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Post 4 -->
+                        <article class="blog-post">
+                            <div class="post-image">
+                                <img src="Sources/blog4.jpg" alt="E-commerce Success">
+                                <div class="post-category">E-commerce</div>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-date">January 2, 2025</span>
+                                    <span class="read-time">8 min read</span>
+                                </div>
+                                <h3><a href="blog-post.html">Building a Successful E-commerce Business from Scratch</a>
+                                </h3>
+                                <p>Step-by-step guide to launching your online store. Learn about platform selection,
+                                    product sourcing, marketing, and customer service strategies for e-commerce success.
+                                </p>
+                                <div class="post-footer">
+                                    <div class="author">
+                                        <img src="Sources/author2.jpg" alt="Author" class="author-avatar">
+                                        <span>Mike Chen</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Post 5 -->
+                        <article class="blog-post">
+                            <div class="post-image">
+                                <img src="Sources/blog5.jpg" alt="Content Creation Tools">
+                                <div class="post-category">Content Creation</div>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-date">December 28, 2024</span>
+                                    <span class="read-time">4 min read</span>
+                                </div>
+                                <h3><a href="blog-post.html">Essential Tools Every Content Creator Should Know in
+                                        2025</a></h3>
+                                <p>Discover the must-have tools for content creation, from graphic design software to
+                                    video editing apps and social media management platforms.</p>
+                                <div class="post-footer">
+                                    <div class="author">
+                                        <img src="Sources/author3.jpg" alt="Author" class="author-avatar">
+                                        <span>Emma Rodriguez</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Post 6 -->
+                        <article class="blog-post">
+                            <div class="post-image">
+                                <img src="Sources/blog6.jpg" alt="Remote Work Skills">
+                                <div class="post-category">Career</div>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-date">December 25, 2024</span>
+                                    <span class="read-time">5 min read</span>
+                                </div>
+                                <h3><a href="blog-post.html">Top 10 Skills You Need to Succeed in Remote Work</a></h3>
+                                <p>As remote work becomes the new normal, certain skills have become essential for
+                                    success. Learn which abilities will help you thrive in a remote work environment.
+                                </p>
+                                <div class="post-footer">
+                                    <div class="author">
+                                        <img src="Sources/author1.jpg" alt="Author" class="author-avatar">
+                                        <span>Sarah Johnson</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <a href="#" class="page-btn active">1</a>
+                        <a href="#" class="page-btn">2</a>
+                        <a href="#" class="page-btn">3</a>
+                        <a href="#" class="page-btn next">Next <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="blog-sidebar">
+                    <!-- Search -->
+                    <div class="sidebar-widget">
+                        <h3>Search Blog</h3>
+                        <div class="search-box">
+                            <input type="text" placeholder="Search articles...">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="sidebar-widget">
+                        <h3>Categories</h3>
+                        <ul class="category-list">
+                            <li><a href="#">Web Development <span>12</span></a></li>
+                            <li><a href="#">Digital Marketing <span>8</span></a></li>
+                            <li><a href="#">Data Analytics <span>6</span></a></li>
+                            <li><a href="#">SEO <span>5</span></a></li>
+                            <li><a href="#">E-commerce <span>7</span></a></li>
+                            <li><a href="#">Content Creation <span>4</span></a></li>
+                            <li><a href="#">Career Advice <span>9</span></a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Popular Posts -->
+                    <div class="sidebar-widget">
+                        <h3>Popular Posts</h3>
+                        <div class="popular-posts">
+                            <div class="popular-post">
+                                <img src="Sources/blog-popular1.jpg" alt="Popular Post">
+                                <div class="popular-content">
+                                    <h4><a href="#">The Complete Guide to Learning JavaScript</a></h4>
+                                    <span>Jan 10, 2025</span>
+                                </div>
+                            </div>
+                            <div class="popular-post">
+                                <img src="Sources/blog-popular2.jpg" alt="Popular Post">
+                                <div class="popular-content">
+                                    <h4><a href="#">Social Media Marketing Strategies That Convert</a></h4>
+                                    <span>Jan 7, 2025</span>
+                                </div>
+                            </div>
+                            <div class="popular-post">
+                                <img src="Sources/blog-popular3.jpg" alt="Popular Post">
+                                <div class="popular-content">
+                                    <h4><a href="#">Data Visualization Techniques for Better Insights</a></h4>
+                                    <span>Jan 3, 2025</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="sidebar-widget newsletter-widget">
+                        <h3>Stay Updated</h3>
+                        <p>Get the latest articles and learning tips delivered to your inbox.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="sidebar-widget">
+                        <h3>Popular Tags</h3>
+                        <div class="tags">
+                            <a href="#" class="tag">Web Design</a>
+                            <a href="#" class="tag">JavaScript</a>
+                            <a href="#" class="tag">SEO</a>
+                            <a href="#" class="tag">Marketing</a>
+                            <a href="#" class="tag">Data</a>
+                            <a href="#" class="tag">E-commerce</a>
+                            <a href="#" class="tag">Content</a>
+                            <a href="#" class="tag">Career</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Same footer as previous pages -->
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>
