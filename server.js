@@ -5,6 +5,43 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Global courses object (moved from inside routes for console.log access)
+const courses = {
+    1: {
+        id: 1,
+        title: 'Web Design Mastery',
+        description: 'Learn HTML, CSS, JavaScript and responsive design',
+        image: 'Sources/webdesign.png',
+        link: 'course-web-design.html',
+        category: 'web-design',
+        duration: '6 weeks',
+        lessons: 15,
+        level: 'Beginner'
+    },
+    2: {
+        id: 2,
+        title: 'Digital Marketing',
+        description: 'Master SEO, social media, and online marketing strategies',
+        image: 'Sources/digitalmar.png',
+        link: 'course-digital-marketing.html',
+        category: 'marketing',
+        duration: '8 weeks',
+        lessons: 18,
+        level: 'Beginner'
+    },
+    3: {
+        id: 3,
+        title: 'Programming Basics',
+        description: 'Learn Python programming and problem-solving skills',
+        image: 'Sources/data.png',
+        link: 'course-programming.html',
+        category: 'programming',
+        duration: '10 weeks',
+        lessons: 20,
+        level: 'Beginner'
+    }
+};
+
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -12,107 +49,14 @@ app.use(express.static(path.join(__dirname, '.')));
 
 // API Routes
 app.get('/api/courses', (req, res) => {
-    const courses = [
-        {
-            id: 1,
-            title: 'Web Design Mastery',
-            description: 'Learn HTML, CSS, JavaScript and responsive design',
-            image: 'Sources/webdesign.png',
-            link: 'course-web-design.html',
-            category: 'web-design',
-            duration: '6 weeks',
-            lessons: 15,
-            level: 'Beginner'
-        },
-        {
-            id: 2,
-            title: 'Digital Marketing',
-            description: 'Master SEO, social media, and online marketing strategies',
-            image: 'Sources/digitalmar.png',
-            link: 'course-digital-marketing.html',
-            category: 'marketing',
-            duration: '8 weeks',
-            lessons: 18,
-            level: 'Beginner'
-        },
-        {
-            id: 3,
-            title: 'Programming Basics',
-            description: 'Learn Python programming and problem-solving skills',
-            image: 'Sources/data.png',
-            link: 'course-programming.html',
-            category: 'programming',
-            duration: '10 weeks',
-            lessons: 20,
-            level: 'Beginner'
-        }
-    ];
-    res.json({ success: true, data: courses });
+    // Use global courses and map to array for frontend
+    const courseList = Object.values(courses);
+    res.json({ success: true, data: courseList });
 });
 
 // Get specific course details
 app.get('/api/courses/:id', (req, res) => {
     const courseId = parseInt(req.params.id);
-    const courses = {
-        1: {
-            id: 1,
-            title: 'Web Design Mastery',
-            description: 'Complete web design course with hands-on projects',
-            instructor: 'Sarah Johnson',
-            duration: '6 weeks',
-            level: 'Beginner',
-            videos: [
-                { id: 1, title: 'HTML Basics', duration: '15:30', url: 'videos/html-intro.mp4' },
-                { id: 2, title: 'CSS Fundamentals', duration: '22:15', url: 'videos/css-basics.mp4' },
-                { id: 3, title: 'JavaScript Introduction', duration: '18:45', url: 'videos/js-intro.mp4' },
-                { id: 4, title: 'Responsive Design', duration: '25:20', url: 'videos/responsive-design.mp4' }
-            ],
-            resources: [
-                { id: 1, title: 'HTML Cheatsheet', type: 'pdf', size: '2.1MB', url: 'resources/html-cheatsheet.pdf' },
-                { id: 2, title: 'CSS Guide', type: 'pdf', size: '3.5MB', url: 'resources/css-guide.pdf' },
-                { id: 3, title: 'Starter Templates', type: 'zip', size: '5.2MB', url: 'resources/starter-templates.zip' }
-            ]
-        },
-        2: {
-            id: 2,
-            title: 'Digital Marketing',
-            description: 'Master digital marketing strategies and tools',
-            instructor: 'Mike Chen',
-            duration: '8 weeks',
-            level: 'Beginner',
-            videos: [
-                { id: 1, title: 'SEO Fundamentals', duration: '25:30', url: 'videos/seo-basics.mp4' },
-                { id: 2, title: 'Social Media Strategy', duration: '32:15', url: 'videos/social-media.mp4' },
-                { id: 3, title: 'Google Ads', duration: '28:45', url: 'videos/google-ads.mp4' },
-                { id: 4, title: 'Marketing Analytics', duration: '35:20', url: 'videos/analytics.mp4' }
-            ],
-            resources: [
-                { id: 1, title: 'SEO Optimization Guide', type: 'pdf', size: '3.2MB', url: 'resources/seo-guide.pdf' },
-                { id: 2, title: 'Social Media Templates', type: 'zip', size: '4.5MB', url: 'resources/social-media-templates.zip' },
-                { id: 3, title: 'Marketing Plan Template', type: 'pdf', size: '2.8MB', url: 'resources/marketing-plan-template.pdf' }
-            ]
-        },
-        3: {
-            id: 3,
-            title: 'Programming Basics',
-            description: 'Learn programming fundamentals with Python',
-            instructor: 'Emma Rodriguez',
-            duration: '10 weeks',
-            level: 'Beginner',
-            videos: [
-                { id: 1, title: 'Python Fundamentals', duration: '45:30', url: 'videos/python-basics.mp4' },
-                { id: 2, title: 'Control Structures', duration: '38:15', url: 'videos/control-structures.mp4' },
-                { id: 3, title: 'Functions & Modules', duration: '42:45', url: 'videos/functions.mp4' },
-                { id: 4, title: 'Data Structures', duration: '55:20', url: 'videos/data-structures.mp4' }
-            ],
-            resources: [
-                { id: 1, title: 'Python Syntax Cheatsheet', type: 'pdf', size: '2.5MB', url: 'resources/python-cheatsheet.pdf' },
-                { id: 2, title: 'Coding Exercises', type: 'zip', size: '6.2MB', url: 'resources/coding-exercises.zip' },
-                { id: 3, title: 'Project Templates', type: 'zip', size: '8.7MB', url: 'resources/project-templates.zip' }
-            ]
-        }
-    };
-
     const course = courses[courseId];
     if (course) {
         res.json({ success: true, data: course });
@@ -192,6 +136,8 @@ app.get('/api/health', (req, res) => {
         version: '1.0.0'
     });
 });
+
+
 
 // Serve specific HTML pages
 app.get('/', (req, res) => {

@@ -6,13 +6,13 @@
   "scripts": {
     "start": "node server.js",
     "build": "echo 'Building TECHMA LMS'",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js"    
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "path": "^0.12.7",
-    "serverless-http": "^4.0.0"
+    "serverless-http": "^4.0.0"    
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
@@ -21,7 +21,8 @@
     "lms",
     "education",
     "courses",
-    "learning"
+    "learning",
+    "ai-chatbot"
   ],
   "author": "TECHMA",
   "license": "MIT",
