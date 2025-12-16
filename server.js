@@ -1,11 +1,18 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+// NEW: Import axios for making HTTP requests to the external AI service
+const axios = require('axios'); 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Global courses object (moved from inside routes for console.log access)
+// !!! CRITICAL: REPLACE THIS URL with the public URL you got from running the Python script in Colab !!!
+// This is the bridge endpoint that Node.js will talk to.
+const PYTHON_AI_API_URL = 'https://scolopendrine-conspecific-marcela.ngrok-free.dev/api/chat'; 
+
+
+// Global courses object 
 const courses = {
     1: {
         id: 1,
@@ -49,12 +56,10 @@ app.use(express.static(path.join(__dirname, '.')));
 
 // API Routes
 app.get('/api/courses', (req, res) => {
-    // Use global courses and map to array for frontend
     const courseList = Object.values(courses);
     res.json({ success: true, data: courseList });
 });
 
-// Get specific course details
 app.get('/api/courses/:id', (req, res) => {
     const courseId = parseInt(req.params.id);
     const course = courses[courseId];
@@ -65,32 +70,54 @@ app.get('/api/courses/:id', (req, res) => {
     }
 });
 
-// Contact form endpoint
+// === UPDATED AI CHATBOT API ROUTE (BRIDGE) ===
+app.post('/api/chat', async (req, res) => {
+    const userMessage = req.body.message;
+    const context = req.body.context; // Capture the context sent from chatbot.js
+
+    if (!userMessage) {
+        return res.status(400).json({ success: false, reply: 'No message provided.' });
+    }
+
+    try {
+        // Forward the message AND context to the external Python AI service
+        // The context will be used by the Python/Hugging Face RAG model
+        const aiResponse = await axios.post(PYTHON_AI_API_URL, {
+            message: userMessage,
+            context: context 
+        });
+
+        // The Python server is expected to return { reply: "..." }
+        res.json({ success: true, reply: aiResponse.data.reply });
+
+    } catch (error) {
+        // Log the full error for debugging
+        console.error('External AI Service Error:', error.message);
+        
+        // Handle errors if the Python server is down or returns an error
+        res.status(503).json({ 
+            success: false,
+            // Provide a clear message instructing the user where the problem is
+            reply: 'AI Learning Assistant is currently offline. Please ensure the Python/Colab server is running and the URL in server.js is correct.' 
+        });
+    }
+});
+// ===================================
+
+
+// Contact form endpoint (rest of file remains unchanged)
 app.post('/api/contact', (req, res) => {
     const { name, email, subject, message } = req.body;
     
-    // Basic validation
     if (!name || !email || !subject || !message) {
-        return res.status(400).json({ 
-            success: false, 
-            message: 'All fields are required' 
-        });
+        return res.status(400).json({ success: false, message: 'All fields are required' });
     }
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-        return res.status(400).json({ 
-            success: false, 
-            message: 'Please enter a valid email address' 
-        });
+        return res.status(400).json({ success: false, message: 'Please enter a valid email address' });
     }
 
-    // In a real application, you would:
-    // 1. Save to database
-    // 2. Send email notification
-    // 3. Log the submission
-    
     console.log('Contact form submission:', { name, email, subject, message });
     
     res.json({
@@ -105,18 +132,12 @@ app.post('/api/newsletter', (req, res) => {
     const { email } = req.body;
     
     if (!email) {
-        return res.status(400).json({ 
-            success: false, 
-            message: 'Email is required' 
-        });
+        return res.status(400).json({ success: false, message: 'Email is required' });
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-        return res.status(400).json({ 
-            success: false, 
-            message: 'Please enter a valid email address' 
-        });
+        return res.status(400).json({ success: false, message: 'Please enter a valid email address' });
     }
 
     console.log('Newsletter subscription:', email);
@@ -136,7 +157,6 @@ app.get('/api/health', (req, res) => {
         version: '1.0.0'
     });
 });
-
 
 
 // Serve specific HTML pages

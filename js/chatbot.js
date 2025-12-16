@@ -2,8 +2,10 @@
 class AIChatbot {
     constructor() {
         this.isOpen = false;
-        this.apiUrl = 'https://new-ngrok.dev/chat';  // Your ngrok URL
-        this.isConnected = false;
+        // CHANGE 1: Point to the local Node.js API Bridge
+        this.apiUrl = '/api/chat'; 
+        // CHANGE 2: Assume local connection is established
+        this.isConnected = true; 
         this.init();
     }
 
@@ -15,16 +17,14 @@ class AIChatbot {
         console.log('Debug: Events set');
         this.addWelcomeMessage();
         console.log('Debug: Welcome added');
-        this.testConnection();
-        console.log('Debug: Connection tested');
+        // REMOVED: this.testConnection(); 
         console.log('🤖 AI Chatbot initialized');
     }
 
     createChatbotHTML() {
         const html = `
         <button class="chatbot-toggle" id="chatbotToggle">
-            <i class="fas fa-robot"></i>  <!-- New AI robot icon -->
-        </button>
+            <i class="fas fa-robot"></i>  </button>
         <div class="chatbot-window" id="chatbotWindow">
             <div class="chatbot-header">
                 <h3 id="chatbotHeader">AI Learning Assistant <span id="connectionStatus">●</span></h3>
@@ -88,6 +88,8 @@ class AIChatbot {
 
     addWelcomeMessage() {
         this.addMessage("Hi! I'm your AI Study Assistant. I can summarize notes/PDFs/videos, generate questions, or answer IT queries. Try: 'Summarize lesson 1' or 'What is HTML?'", 'bot');
+        // Set initial status to connected (to the local server)
+        this.updateConnectionStatus(true); 
     }
 
     showTyping() {
@@ -98,23 +100,8 @@ class AIChatbot {
         document.getElementById('typingIndicator').style.display = 'none';
     }
 
-    async testConnection() {
-        try {
-            const response = await fetch(this.apiUrl.replace('/chat', '/health'));
-            if (response.ok) {
-                this.isConnected = true;
-                this.updateConnectionStatus(true);
-                console.log('✅ Connected to API');
-            } else {
-                this.isConnected = false;
-                this.updateConnectionStatus(false);
-            }
-        } catch (error) {
-            this.isConnected = false;
-            this.updateConnectionStatus(false);
-            console.log('❌ API offline—using mocks');
-        }
-    }
+    // REMOVED: testConnection()
+    // REMOVED: getMockResponse()
 
     updateConnectionStatus(connected) {
         const status = document.getElementById('connectionStatus');
@@ -133,18 +120,14 @@ class AIChatbot {
         this.showTyping();
 
         try {
-            let response;
-            if (this.isConnected) {
-                response = await this.sendToAI(message);
-            } else {
-                response = await this.getMockResponse(message);
-            }
+            // SIMPLIFIED: Always send to the local Express API bridge
+            const response = await this.sendToAI(message);
 
             this.hideTyping();
             this.addMessage(response, 'bot');
         } catch (error) {
             this.hideTyping();
-            this.addMessage("Sorry, connection issue—try again!", 'bot');
+            this.addMessage("Sorry, the server bridge encountered an issue. Please check the backend connection to the Hugging Face API.", 'bot');
             console.error('Chat error:', error);
         }
     }
@@ -158,7 +141,7 @@ class AIChatbot {
             body: JSON.stringify({ message, context })
         });
 
-        if (!response.ok) throw new Error('API unavailable');
+        if (!response.ok) throw new Error('API unavailable or returned an error');
         const data = await response.json();
         return data.reply;
     }
@@ -175,18 +158,6 @@ class AIChatbot {
             notes: lessonNotes,
             pdfExcerpt: pdfText
         };
-    }
-
-    async getMockResponse(message) {
-        await new Promise(resolve => setTimeout(resolve, 1000));  // Simulate delay
-        const mocks = {
-            'html': 'HTML is HyperText Markup Language for structuring web content with tags like <h1> and <p>.',
-            'css': 'CSS styles HTML using selectors (.class, #id) and properties like color: blue; margin: 10px.',
-            'js': 'JavaScript adds interactivity. Variables: let x = 5; Functions: function greet() { return "Hi"; }.',
-            'default': 'Great question! For IT help, try "What is HTML?" or "Summarize lesson".'
-        };
-        const key = message.toLowerCase().includes('html') ? 'html' : message.toLowerCase().includes('css') ? 'css' : message.toLowerCase().includes('js') ? 'js' : 'default';
-        return mocks[key];
     }
 }
 
