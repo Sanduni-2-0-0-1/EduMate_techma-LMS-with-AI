@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 // !!! CRITICAL: REPLACE THIS URL with the public URL you got from running the Python script in Colab !!!
 // This is the bridge endpoint that Node.js will talk to.
-const PYTHON_AI_API_URL = 'https://scolopendrine-conspecific-marcela.ngrok-free.dev/api/chat'; 
+const PYTHON_AI_API_URL = 'https://huggingface.co/spaces/WebDevBot2025/techma-lms-ai'; 
 
 
 // Global courses object 
@@ -71,37 +71,35 @@ app.get('/api/courses/:id', (req, res) => {
 });
 
 // === UPDATED AI CHATBOT API ROUTE (BRIDGE) ===
+// AI CHATBOT API ROUTE (Node.js bridge)
 app.post('/api/chat', async (req, res) => {
     const userMessage = req.body.message;
-    const context = req.body.context; // Capture the context sent from chatbot.js
 
     if (!userMessage) {
         return res.status(400).json({ success: false, reply: 'No message provided.' });
     }
 
     try {
-        // Forward the message AND context to the external Python AI service
-        // The context will be used by the Python/Hugging Face RAG model
+        // Gradio expects a JSON with {"data": ["user message"]}
         const aiResponse = await axios.post(PYTHON_AI_API_URL, {
-            message: userMessage,
-            context: context 
+            data: [userMessage]
         });
 
-        // The Python server is expected to return { reply: "..." }
-        res.json({ success: true, reply: aiResponse.data.reply });
+        // Gradio returns a list in aiResponse.data.data
+        const reply = aiResponse.data?.data?.[0] || "Sorry, no response from AI.";
+
+        res.json({ success: true, reply });
 
     } catch (error) {
-        // Log the full error for debugging
-        console.error('External AI Service Error:', error.message);
-        
-        // Handle errors if the Python server is down or returns an error
+        console.error('Error connecting to Gradio AI:', error.message);
         res.status(503).json({ 
             success: false,
-            // Provide a clear message instructing the user where the problem is
-            reply: 'AI Learning Assistant is currently offline. Please ensure the Python/Colab server is running and the URL in server.js is correct.' 
+            reply: 'AI server is offline or unreachable. Check your Gradio link.'
         });
     }
 });
+
+
 // ===================================
 
 

@@ -1,50 +1,35 @@
-// AI Chatbot System
+// AI Chatbot System (Updated for Gradio/Hugging Face Backend)
 class AIChatbot {
     constructor() {
         this.isOpen = false;
-        // CHANGE 1: Point to the local Node.js API Bridge
-        this.apiUrl = '/api/chat'; 
-        // CHANGE 2: Assume local connection is established
-        this.isConnected = true; 
+        // CHANGE THIS: your Hugging Face Gradio share link
+        this.apiUrl = "https://webdevbot2025-techma-lms-ai.hf.space";
         this.init();
     }
 
     init() {
-        console.log('Debug: Starting init...');
         this.createChatbotHTML();
-        console.log('Debug: HTML added to body', document.getElementById('chatbotToggle'));
         this.setupEventListeners();
-        console.log('Debug: Events set');
         this.addWelcomeMessage();
-        console.log('Debug: Welcome added');
-        // REMOVED: this.testConnection(); 
         console.log('🤖 AI Chatbot initialized');
     }
 
     createChatbotHTML() {
         const html = `
-        <button class="chatbot-toggle" id="chatbotToggle">
-            <i class="fas fa-robot"></i>  </button>
-        <div class="chatbot-window" id="chatbotWindow">
-            <div class="chatbot-header">
-                <h3 id="chatbotHeader">AI Learning Assistant <span id="connectionStatus">●</span></h3>
-                <button class="chatbot-close" id="chatbotClose">&times;</button>
-            </div>
-            <div class="chatbot-messages" id="chatbotMessages"></div>
-            <div class="typing-indicator" id="typingIndicator">
-                <div class="typing-dots">
-                    <span></span><span></span><span></span>
-                </div>
-                AI is typing...
-            </div>
-            <div class="chatbot-input">
-                <input type="text" id="chatbotInput" placeholder="Ask about lessons, summaries, IT queries...">
-                <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
+    <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-robot"></i>
+    </button>
+    <div class="chatbot-window" id="chatbotWindow" style="display:none; flex-direction:column;">
+        <button class="chatbot-close" id="chatbotClose">&times;</button>
+        <iframe id="chatbotIframe" 
+            src="https://webdevbot2025-techma-lms-ai.hf.space" 
+            width="100%" height="600px" style="border:none; border-radius:12px;">
+        </iframe>
+    </div>
     `;
         document.body.insertAdjacentHTML('beforeend', html);
     }
+
 
     setupEventListeners() {
         const toggle = document.getElementById('chatbotToggle');
@@ -55,9 +40,7 @@ class AIChatbot {
         if (toggle) toggle.addEventListener('click', () => this.toggleChat());
         if (close) close.addEventListener('click', () => this.closeChat());
         if (send) send.addEventListener('click', () => this.sendMessage());
-        if (input) input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.sendMessage();
-        });               
+        if (input) input.addEventListener('keypress', (e) => { if (e.key === 'Enter') this.sendMessage(); });
     }
 
     toggleChat() {
@@ -77,38 +60,18 @@ class AIChatbot {
         if (!messages) return;
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${sender}`;
-        messageDiv.innerHTML = `
-            <div class="message-content">
-                <strong>${sender === 'user' ? 'You' : 'AI'}:</strong> ${text}
-            </div>
-        `;
+        messageDiv.innerHTML = `<div class="message-content"><strong>${sender === 'user' ? 'You' : 'AI'}:</strong> ${text}</div>`;
         messages.appendChild(messageDiv);
         messages.scrollTop = messages.scrollHeight;
     }
 
     addWelcomeMessage() {
-        this.addMessage("Hi! I'm your AI Study Assistant. I can summarize notes/PDFs/videos, generate questions, or answer IT queries. Try: 'Summarize lesson 1' or 'What is HTML?'", 'bot');
-        // Set initial status to connected (to the local server)
-        this.updateConnectionStatus(true); 
+        this.addMessage("Hi! I'm your AI Study Assistant. I can summarize lessons, PDFs, and videos, or answer IT queries.", 'bot');
+        this.updateConnectionStatus(true);
     }
 
-    showTyping() {
-        document.getElementById('typingIndicator').style.display = 'block';
-    }
-
-    hideTyping() {
-        document.getElementById('typingIndicator').style.display = 'none';
-    }
-
-    // REMOVED: testConnection()
-    // REMOVED: getMockResponse()
-
-    updateConnectionStatus(connected) {
-        const status = document.getElementById('connectionStatus');
-        if (status) {
-            status.style.color = connected ? '#10b981' : '#ef4444';
-        }
-    }
+    showTyping() { document.getElementById('typingIndicator').style.display = 'block'; }
+    hideTyping() { document.getElementById('typingIndicator').style.display = 'none'; }
 
     async sendMessage() {
         const input = document.getElementById('chatbotInput');
@@ -120,30 +83,30 @@ class AIChatbot {
         this.showTyping();
 
         try {
-            // SIMPLIFIED: Always send to the local Express API bridge
-            const response = await this.sendToAI(message);
-
+            const context = this.getCourseContext();
+            const response = await this.sendToAI(message, context);
             this.hideTyping();
             this.addMessage(response, 'bot');
         } catch (error) {
             this.hideTyping();
-            this.addMessage("Sorry, the server bridge encountered an issue. Please check the backend connection to the Hugging Face API.", 'bot');
+            this.addMessage("Sorry, the AI service is unavailable.", 'bot');
             console.error('Chat error:', error);
         }
     }
 
-    async sendToAI(message) {
-        const context = this.getCourseContext();
-
+    async sendToAI(message, context) {
+        const payload = {
+            data: [message, context.pdfExcerpt || "", context.videoTranscript || ""]
+        };
         const response = await fetch(this.apiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message, context })
+            body: JSON.stringify(payload)
         });
 
-        if (!response.ok) throw new Error('API unavailable or returned an error');
+        if (!response.ok) throw new Error('API returned an error');
         const data = await response.json();
-        return data.reply;
+        return data.data ? data.data[0] : "No response from AI";
     }
 
     getCourseContext() {
@@ -151,17 +114,22 @@ class AIChatbot {
         const currentVideo = document.querySelector('.video-card:hover .video-info h3')?.textContent || '';
         const lessonNotes = document.getElementById('lesson-dropdown')?.value || '';
         const pdfText = document.querySelector('[data-pdf-text]:hover')?.getAttribute('data-pdf-text') || '';
-
         return {
             course: courseTitle,
             currentTopic: currentVideo,
             notes: lessonNotes,
-            pdfExcerpt: pdfText
+            pdfExcerpt: pdfText,
+            videoTranscript: currentVideo // or you can store transcript text elsewhere
         };
+    }
+
+    updateConnectionStatus(connected) {
+        const status = document.getElementById('connectionStatus');
+        if (status) status.style.color = connected ? '#10b981' : '#ef4444';
     }
 }
 
-// Initialize when DOM is ready
+// Initialize chatbot
 document.addEventListener('DOMContentLoaded', () => {
     window.chatbot = new AIChatbot();
     console.log('🚀 AI Chatbot ready!');
